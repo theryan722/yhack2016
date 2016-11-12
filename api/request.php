@@ -1,6 +1,5 @@
-require ("config.php");
-
 <?php
+        require 'config.php';
         // Open database
         $method = $_GET["action"];
 
@@ -19,7 +18,7 @@ require ("config.php");
                 $id = rand();
 
                 $query = "INSERT INTO requests (type, description, address, price, email, state, id)
-                VALUES ($type, $dsc, $address, $price, $email, $state, $id)";
+                VALUES ('{$type}', '{$dsc}', '{$address}', '{$price}', '{$email}', '{$state}', '{$id}')";
 
                 if (mysqli_query($db, $query))
                         echo "New record created successfully";
@@ -30,7 +29,7 @@ require ("config.php");
                 $id = intval($_GET["id"]);
                 $state = intval($_GET["state"]);
 
-                $query = "UPDATE requests SET state=$state WHERE id=$id";
+                $query = "UPDATE requests SET state='{$state}' WHERE id='{$id}'";
 
                 if (mysqli_query($db, $query))
                         echo "Record updated successfully";
@@ -40,7 +39,7 @@ require ("config.php");
         } else if (strcmp("get", $method) == 0) {
                 $id = intval($_GET["id"]);
 
-                $query = "SELECT * FROM profiles WHERE id=$id";
+                $query = "SELECT * FROM profiles WHERE id='{$id}'";
                 $result = mysqli_query($db, $query);
 
                 $row = mysqli_fetch_assoc($result);
