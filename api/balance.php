@@ -2,7 +2,7 @@
         $method = $_GET["action"];
 
         // Open database
-        $db = mysqli_connect('localhost', 'yhack2016', '6102kcahy', 'yhackdb');
+        
 
         if (!$db)
                 die("Connection failed: " . mysqli_connect_error());
