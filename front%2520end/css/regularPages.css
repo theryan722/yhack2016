@@ -1,0 +1,21 @@
+body {
+    text-align: center;
+    width: 80%;
+    margin-left: 10%;
+    font-family: Open Sans;
+}
+
+
+h1 {
+    color: #8FDBCD;
+    text-shadow:  1px 1px #B5B5B5;
+    margin: auto;
+    
+}
+           
+
+@media only screen and (min-width: 1000px) {
+    body {
+        margin-top: 20%;
+    }
+}
