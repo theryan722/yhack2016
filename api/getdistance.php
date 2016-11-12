@@ -18,6 +18,6 @@ function getDistance($addressFrom, $addressTo){
     $dist = acos($dist);
     $dist = rad2deg($dist);
     $miles = $dist * 60 * 1.1515;
-    return $miles;
+    return round($miles);
 }
 ?>
