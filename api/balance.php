@@ -1,14 +1,17 @@
 <?php
+        require 'config.php';
+
         $method = $_GET["action"];
+        $master_id = "master@master.com";
 
         // Open database
-        $db = mysqli_connect('localhost', 'username', 'pass', 'table');
+        $db = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATABASE);
 
         if (!$db)
                 die("Connection failed: " . mysqli_connect_error());
 
         // Always get current balance amount
-        $query = "SELECT balance FROM profiles WHERE email='email@email.com'";
+        $query = "SELECT balance FROM profiles WHERE email='{$master_id}'";
         $result = mysqli_query($db, $query);
 
         //Should only be one row
@@ -24,7 +27,7 @@
 
                 $current_balance += strcmp("add"), $method) ? -$amount : $amount;
 
-                $newquery = "UPDATE profiles SET balance=$current_balance WHERE email='email@email.com'";
+                $newquery = "UPDATE profiles SET balance=$current_balance WHERE email='{$master_id}'";
                 if (mysqli_query($db, $newquery))
                         echo "Record updated successfully";
                 else
