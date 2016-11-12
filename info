@@ -1,0 +1,87 @@
+===========Request Types==================
+Pretend to Be My Date
+Humor Me
+Window Cleaning
+Lawn Mowing
+Snow Shoveling
+Walk Dog
+Paint Fence
+Roof Tiling
+House Cleaning
+Vacuuming
+Feeding Pets
+Car Cleaning
+Move Furniture
+Grocery Shopping
+Package Pickup
+Laundry
+Raking Leaves
+Hedge Trimming
+Gutter Cleaning
+Babysitting
+Dish Washing
+Cooking
+Gardening
+Weeding
+Other
+====================================
+DATABASE TABLES
+
+PROFILES "profiles"
+email | password | name | address | balance | budget | radius
+
+REQUESTS "requests"
+type | description | address | price | email | state | id
+
+CHARITY "charity"
+title | description | address | price | email | state | id
+
+
+============BALANCE=============== (DONE, TESTED)
+yalecodeathon2016.000webhostapp.com/api/balance.php?action=get
+	returns master balance
+  
+yalecodeathon2016.000webhostapp.com/api/balance.php?action=add&amount=AMOUNT
+	adds the specified value to the master balance
+  
+yalecodeathon2016.000webhostapp.com/api/balance.php?action=subtract&AMOUNT
+	subtracts the specified value from the master balance
+  
+=============USER================== (DONE, TESTED)
+yalecodeathon2016.000webhostapp.com/api/user.php?action=get&email=USEREMAIL
+	returns a json object of info about the user (identified by their email)
+  
+yalecodeathon2016.000webhostapp.com/api/user.php?action=add&email=EMAIL&password=PASSWORD&name=NAME&address=ADDRESS&balance=BALANCE&budget=BUDGET&radius=RADIUS
+	adds a new user account
+
+=============REQUEST=================  (DONE TESTED) 
+yalecodeathon2016.000webhostapp.com/api/request.php?action=add&type=TYPEOFJOB&description=DESCRIPTION&address=ADDRESS&price=PRICE&email=EMAIL&state=CURRENTSTATE
+	adds a new request. The email is used to tie the request to its owner. State 0 = unfulfilled, 1 = in progress, 2 = fulfilled. 
+ 	id uniquely identifies the request.
+
+yalecodeathon2016.000webhostapp.com/api/request.php?action=get&id=REQUESTID
+	returns json about the specified request
+
+yalecodeathon2016.000webhostapp.com/api/request.php?action=update&id=REQUESTID&state=CURRENTSTATE
+	updates the state of the request
+
+yalecodeathon2016.000webhostapp.com/api/request.php?action=getlist&address=ADDRESS&radius=RADIUS
+	uses the users address to return a list of all requests within that distance (json)
+
+============CHARITY===================
+yalecodeathon2016.000webhostapp.com/api/charity.php?action=add&title=TITLE&description=DESCRIPTION&address=ADDRESS&price=PRICE&email=EMAIL&state=CURRENTSTATE&id=CHARITYID
+	adds a new charity request. State 0 = unfulfilled, 1 = in progress, 2 = fulfilled
+  id uniquely identifies the request. all charity requests are created by the master/admin account.
+
+yalecodeathon2016.000webhostapp.com/api/charity.php?action=get&id=CHARITYID
+	returns json about the specified charity request
+
+yalecodeathon2016.000webhostapp.com/api/charity.php?action=update&id=CHARITYID&state=CURRENTSTATE
+	updates the state of the charity request
+
+yalecodeathon2016.000webhostapp.com/api/charity.php?action=getlist&address=ADDRESS&radius=RADIUS
+	returns a list of all requests within users radius (json)
+
+=============GETDISTANCE================= (DONE, TESTED)
+yalecodeathon2016.000webhostapp.com/api/getdistance.php?address1=ADDRESS1&address2=ADDRESS2
+	returns distnace between two addresses
