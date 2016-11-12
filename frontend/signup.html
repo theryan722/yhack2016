@@ -1,0 +1,64 @@
+<html>
+
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/regularPages.css">
+         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
+        <style>
+            body {
+                margin-top: 55%;
+                background: url("images/sky.jpg");
+            }
+            
+            input[type="text"] {
+                background: url(images/user.png) no-repeat left;
+            }
+            
+            input[type="email"] {
+                background: url(images/email.png) no-repeat left;
+            }
+            
+            input[type="password"] {
+                background: url(images/password.png) no-repeat left;
+            }
+            
+             input[type="text"],input[type="email"],  input[type="password"] {
+                background-color: rgba(255,255,255, 0.5);
+                padding: 10px;
+                padding-left:50px;           
+            }
+            
+            input[type="submit"] {
+                background-color: #579EAD;
+                color: white;
+            }
+            
+            input {
+                margin: 20px;
+                border-radius: 100px;
+                width: 80%;
+                height: 60px;
+                color: #575757;
+                font-size: 30px;
+                border:1px solid #BFBFBF;
+            }
+            
+            
+        </style>
+    </head>
+    
+    
+    <body>
+        <form>
+            <div id="signup">
+            <h1>Sign Up!</h1> <br>
+            <div class="beep">
+                <input type="text" name="name" value="NAME" id="name" onclick="this.value=''">  <br>
+                <input type="email" name="email" value="EMAIL" id="email" onclick="this.value=''"><br>
+            </div>
+            <input type="password" name="password" value="password" id="PASSWORD" onclick="this.value=''"><p>
+            <input type="submit" name="submit" value="SIGN UP">
+            </div>
+        </form>
+    </body>
+    
+</html>

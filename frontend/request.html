@@ -1,0 +1,71 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/regularPages.css">
+         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
+        <style>
+       
+            h1{
+               color: #8FDBCD;
+            }
+            
+            input, textarea {
+               width: 100%;
+               margin: 10px;
+               border:1px solid #636363;
+               font-size: 14px;
+            }
+            
+            input[type="submit"] {
+                background-color: white;
+            }
+            
+            select {
+                width: 100%;
+            }
+            
+            textarea:focus {
+                outline: none;
+            }
+            #description {
+                height: 200px;
+            }
+            
+            table {
+                margin: auto;
+            }
+         
+            @media only screen and (min-width: 1000px) {
+                body {
+                    margin-top: 0%;
+                }
+            }
+            
+        </style>
+    </head>
+    
+    <body>
+        <form>
+            <h1> Request a Task</h1>
+            
+            <input type="text" value="Type of Job"><br>
+            <textarea rows="4" value="Description">Description of task</textarea><br>
+            <!--<input type="text" value="Description" id="description"><br>-->
+            <input type="text" value="Name" ><br>
+            <input type="tel" pattern="^\d{3}-\d{3}-\d{4}$" value="Phone (111-111-1111)"><br>
+            <input type="text" value="Address"><br>
+            <input type="email" value="Email@Server.com" > <p>
+            <br clear="all">
+            <select>
+                <option value="Not Fulfilled">Not Fulfilled</option>
+                <option value="In Progress">In Progress</option>
+                <option value="Fulfilled">Fulfilled</option>
+            </select>
+            <input type="submit" value="Submit" value="submit">
+            
+            
+        </form>
+        
+    </body>
+
+
+</html
