@@ -4,18 +4,15 @@ require ("config.php");
 	// both requests have action and email
 	$action = $_GET("action");
 	$email = $_GET("email");
-
 	$conn = mysqli_connect(DB_HOST, DB_USER, DB_PASSWORD, DB_DATEBASE);
-
 	if (strcmp($action, "add") == 0) {
-		
+
 		$password = $_GET("password")
 		$name = $_GET("name");
 		$address = $_GET("address");
-		$balance = $_GET("balance");
-		$budget = $_GET("budget");
-		$radius	 = $_GET("radius");
-
+		$balance = intval($_GET("balance"));
+		$budget = intval($_GET("budget"));
+		$radius	 = intval($_GET("radius"));
 
 		$sql = "INSERT INTO profiles (email, password, name, address, balance, budget, radius)
 				VALUES ($email, $password, $name, $address, $balance, $budget, $radius)";
@@ -26,7 +23,6 @@ require ("config.php");
 		else {
 			echo "Entry failure";
 		}
-
 	}
 	else if (strcmp($action, "get") == 0) {
 		$query = "SELECT * FROM $profiles WHERE email = $email LIMIT 1";
@@ -35,6 +31,5 @@ require ("config.php");
 		$json - json_encode($array);
 		echo $json;
 	}
-
 	mysqli_close($conn);
 ?>
