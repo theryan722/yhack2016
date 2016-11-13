@@ -3,6 +3,7 @@
     <head>
         <link rel="stylesheet" type="text/css" href="css/regularPages.css">
          <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
+<script src="js/jquery.min.js"></script>
         <style>
             body {
                 margin-top: 10%;
@@ -13,7 +14,7 @@
             
              input[type="text"],input[type="email"],  input[type="password"] {
                 background-color: rgba(255,255,255, 0.5);
-                padding: 10px; 
+                padding: 10px;
             }
             
             input[type="submit"], input[type="button"] {
@@ -50,7 +51,33 @@
     </head>
     
     <body>
-        <form action="" method="get" onsubmit="calculate();">  
+      <script type="text/javascript">
+      function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() { 
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous 
+    xmlHttp.send(null);
+}
+      
+      function exb(resp){
+        console.log(resp);
+      }
+        function calculate() {
+            var emailP = document.getElementById("email").value;
+            var passP = document.getElementById("password").value;
+            var nameP = document.getElementById("name").value;
+            var addressP = document.getElementById("address").value;
+            var balanceP = document.getElementById("balance").value;
+            var budgetP = document.getElementById("budget").value;
+            var radiusP = document.getElementById("radius").value;
+            httpGetAsync(("http://yalecodeathon2016.000webhostapp.com/api/user.php?action=add&email=" + emailP + "&password=" + passP + "&name=" + nameP + "&address=" + addressP + "&balance=" + balanceP + "&budget=" + budgetP + "&radius=" + radiusP).replace(/ /g,"%20"), exb);
+}
+    </script>
+        <form action="" method="get" onSubmit="javascript:calculate();">
             <div id="signup">
             <p></p>
             <h1>Sign Up!</h1>
@@ -58,7 +85,7 @@
             <div class="beep">
                 <input type="text" name="name" value="NAME" id="name"><br>
                 <input type="text" name="email" value="EMAIL" id="email" ><br>
-                <input type="text" name="distance" value="DISTANCE" id="distance" ><br>
+                <input type="text" name="radius" value="DISTANCE" id="radius" ><br>
                 <input type="text" name="address" value="ADDRESS" id="address" ><br>
                 <input type="text" name="balance" value="BALANCE" id="balance" ><br>
                 <input type="text" name="budget" value="BUDGET" id="budget" ><br>
@@ -67,23 +94,10 @@
                 
                 
                 
-            <input type="text" name="password" value="PASSWORD" id="PASSWORD" ><p>
+            <input type="text" name="password" value="PASSWORD" id="password" ><p>
             <input type="submit" name="submit" value="SIGN UP">
             <a href="index.html"><input type="button" name="return" value="GO BACK"></a>
-            </div>    
+            </div>
         </form>
     </body>
-    
-    <script>
-        function calculate() {
-            var namePrint = document.getElementById("name").value;
-            alert(namePrint);
-            var emailPrint = document.getElementById("email").value;
-            alert(emailPrint);
-            
-            var xmlHttp = new XMLHttpRequest();
-            xmlHttp.open("GET", "http://yalecoadeathon2016.000webhostapp.com/api/user.php?action=add&email=")
-        }
-    </script>
-    
 </html>
