@@ -1,17 +1,20 @@
-
 .menu { display: none;}
 
 nav {
+  display: block !important;
   position: absolute;
   top: 0px;
   right:0px;
   background: none;
   width: 200px;
-   
+  font-size: 50px !important;
   box-shadow: none;
 }
 
 .menu li {
+  width: 200px;
+  background-color: white;
+  font-size: 30px !important;
   display: block;
   margin: 0;
 }
@@ -19,11 +22,12 @@ nav {
 .menu li a {
   background: #fff;
   color: #797979;
+    font-size: 30px !important;
 }
 
 .menu li a:hover,
 .menu li:hover>a {
-  background: #303E4F;
+  background: #8C8C8C;
   color: #fff; 
 }
 

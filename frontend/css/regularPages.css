@@ -1,13 +1,17 @@
 body {
+   background-image: url("../images/geometry.png");
     text-align: center;
     width: 90%;
     margin-left: 5%;
     font-family: Open Sans;
+    color: #373737;
+    font-size: 35px !important;
 }
 
 
 h1 {
-    font-size: 450%;
+    font-size: 120px;
+    color: #8FDBCD;
     text-shadow: 2px 2px #545454;
 
 }
