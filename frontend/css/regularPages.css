@@ -1,22 +1,15 @@
 body {
     text-align: center;
-    width: 80%;
-    margin-left: 10%;
+    width: 90%;
+    margin-left: 5%;
     font-family: Open Sans;
 }
 
 
 h1 {
- 
     font-size: 450%;
+    text-shadow: 2px 2px #545454;
 
-    text-shadow:
-    -1px -1px 0 #BFBFBF,
-    1px -1px 0 #BFBFBF,
-    -1px 1px 0 #BFBFBF,
-    1px 1px 0 #BFBFBF;
-
-    text-shadow: 2px 2px #7A7A7A;
 }
            
 input:focus {

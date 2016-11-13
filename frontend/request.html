@@ -9,13 +9,15 @@
         <style>
             body {
                 margin: auto;
-                margin-top: 50%;
+                margin-top: 30%;
                 text-align: center;
                 background-image: url("images/geometry.png");
             }
             
             h1{
                color: #8FDBCD;
+                font-size: 75px;
+                padding-bottom: 40px;
             }
             
             input[type="submit"] {
@@ -23,40 +25,38 @@
                 color: white;
                 border: 0;
                 width: 70%;
-                height: 50px;
+                height: 70px;
                 font-size: 15px;
+                border:1px solid #545454;
             }
-            
-            select {
-                width: 100%;
-                margin-left: 10px;
-                color: #575757;
-            }
-            
-            table {
-                margin: auto;
-            }
-         
+        
             @media only screen and (min-width: 1000px) {
                 body {
                     margin-top: 0%;
                 }
             }
+            input {
+                margin-top: 20px;
+                font-size: 40px !important;
+            }
             
+            .input-field{
+                padding:20px !important;
+            }
             
         </style>
     </head>
     
     <body>
-        <form>
+        <form id="request">
         <h1> Request a Task</h1>            
-                    <div class="row">
+                  
                     <div class="input-field col s12">
                     <i class="material-icons prefix">label</i>
                     <input id="type" type="text" 
                     value="Type of Job">
                     </div>
-                    
+                    <p>
                     <div class="input-field col s12">
                     <i class="material-icons prefix">info</i>
                     <input id="describe" type="text" class="validate"
@@ -90,7 +90,6 @@
                     <i class="material-icons prefix">thumb_up</i>
                         <input id="reward" type="text" value="Amount Rewarded">
                     </div>
-                    <br clear ="all">
                 
                     <input type="submit" value="SUBMIT" id="sub">
         </form>

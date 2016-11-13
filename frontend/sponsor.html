@@ -1,0 +1,75 @@
+<html>
+    <head>
+        <link rel="stylesheet" type="text/css" href="css/regularPages.css">
+        <link rel="stylesheet" type="text/css" href="css/materialize.css">
+        <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
+
+        <style>
+            body {
+                margin: auto;
+                margin-top: 30%;
+                text-align: center;
+                background-image: url("images/geometry.png");
+            }
+            
+            h1{
+               color: #8FDBCD;
+                font-size: 75px;
+                padding-bottom: 40px;
+            }
+            
+            input[type="submit"] {
+                background-color: #8FDBCD;
+                color: white;
+                border: 0;
+                width: 70%;
+                height: 70px;
+                font-size: 15px;
+                border: 1px solid #545454;
+                
+            }
+        
+            @media only screen and (min-width: 1000px) {
+                body {
+                    margin-top: 0%;
+                }
+            }
+            input {
+                margin-top: 20px;
+                font-size: 40px !important;
+            }
+            
+            .input-field{
+                padding:20px !important;
+            }
+            
+        </style>
+    </head>
+    
+    <body>
+        <form id="Sponsor">
+        <h1> Sponsor Us!</h1>            
+        
+        <div class="input-field col s12">
+        <i class="material-icons prefix">input</i>
+        <input id="amount" type="text" value="Amount">
+        </div>
+
+        <div class="input-field col s12">    
+        <i class="material-icons prefix">credit_card</i>
+        <input id="number" type="text" value="Card Number">
+        </div>
+
+        <div class="input-field col s12">
+        <i class="material-icons prefix">vpn_key</i>
+        <input id="pin" type="text" value="Three Digit Pin"></div>
+
+
+        <input type="submit" value="Spread the love!" id="sub">
+        </form>
+    </body>
+
+
+</html
