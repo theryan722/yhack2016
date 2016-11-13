@@ -33,7 +33,7 @@
 				}
         //{"email":"master@master.com","password":"master","name":"Master","address":"Payne Whitney Gymnasium, 70 Tower Pkwy, New Haven, CT 06511","balance":"1000","budget":"0","radius":"0"}
         function genList(listjson){
-					var jsonarray = JSON.parse('{"address": "", "radius":""}');
+					var jsonarray = JSON.parse(listjson);
           var address = jsonarray['address'];
           var radius = jsonarray['radius'];
           
@@ -42,12 +42,12 @@
         
         function displayList(dispjson){
           var feedhtml = "";
-        	for(var i = 0; i < dispjson.length; i++) {
-    				var obj = dispjson[i];
-						var items = JSON.parse('{"type":"", "description":"", "address":"", "price":"", "id":""}');
+          var jsonarray = JSON.parse(dispjson);
+        	for(var i = 0; i < jsonarray.length; i++) {
+    				var items = jsonarray[i];
             
-            feedhtml += "<b>Type of Job:</b> <span id=\"x\">"+items['type']+"</span> <br>Description: "+items['description']+"<br>"+"Address: "+items['address']+" miles away <br>Price: $"+items['price'] + 
-              "<br><input type=\"submit\" value=\"Fulfill\" id=\"s\" onclick=\"fulfillNow("+items['id']+");<br><br>";
+            feedhtml += "<b>Type of Job:</b> <span id=\"x\">"+items['type']+"</span> <br/><b>Description:</b> "+items['description']+"<br/>"+"<b>Address: </b>"+items['address']+" miles away <br/><b>Price: </b>$"+items['price'] + 
+              "<br/><input type=\"submit\" value=\"Fulfill\" id=\"s\" onclick='fulfillNow("+items['id']+");'> <br/><br/>";
             
 					}
           document.getElementById('feed').innerHTML = feedhtml;
@@ -59,7 +59,8 @@
         
         function fulfilled(){
             alert("You have chosen to fulfill this request!");
-          	window.location="#";
+          	window.location.href="#";
+          	return false;
         }
         
         function httpGetAsync(theUrl, callback) {
@@ -93,7 +94,7 @@
         <h1> Fulfill</h1>
       
         <form>
-          <div id="feed"></div>
+          <div id="feed"><h3>Loading Data....</h3></div>
         </form>
         
     </body>
