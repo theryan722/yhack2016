@@ -78,7 +78,7 @@
         function login() {
             var emailP = document.getElementById("email").value;
             var passP = document.getElementById("password").value;
-            httpGetAsync(("http://yalecodeathon2016.000webhostapp.com/api/user.php?action=add&email=" + emailP + "&password=" + passP).replace(/ /g,"%20"), exb);
+            httpGetAsync(("http://yalecodeathon2016.000webhostapp.com/api/user.php?action=verify&email=" + emailP + "&password=" + passP).replace(/ /g,"%20"), exb);
 }
     </script>
         
