@@ -25,38 +25,76 @@
     </head>
     
     <body> 
+      <script type="text/javascript">
+        function getCookie(name) {
+  				var value = "; " + document.cookie;
+  				var parts = value.split("; " + name + "=");
+  				if (parts.length == 2) return parts.pop().split(";").shift();
+				}
+        //{"email":"master@master.com","password":"master","name":"Master","address":"Payne Whitney Gymnasium, 70 Tower Pkwy, New Haven, CT 06511","balance":"1000","budget":"0","radius":"0"}
+        function genList(listjson){
+					var jsonarray = JSON.parse('{"address": "", "radius":""}');
+          var address = jsonarray['address'];
+          var radius = jsonarray['radius'];
+          
+          httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/request.php?action=getlist&address="+address+"&radius="+radius, displayList);
+        }
+        
+        function displayList(dispjson){
+          var feedhtml = "";
+        	for(var i = 0; i < dispjson.length; i++) {
+    				var obj = dispjson[i];
+						var items = JSON.parse('{"type":"", "description":"", "address":"", "price":"", "id":""}');
+            
+            feedhtml += "<b>Type of Job:</b> <span id=\"x\">"+items['type']+"</span> <br>Description: "+items['description']+"<br>"+"Address: "+items['address']+" miles away <br>Price: $"+items['price'] + 
+              "<br><input type=\"submit\" value=\"Fulfill\" id=\"s\" onclick=\"fulfillNow("+items['id']+");<br><br>";
+            
+					}
+          document.getElementById('feed').innerHTML = feedhtml;
+        }
+        
+        function fulfillNow(rid){
+          httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/request.php?action=update&id="+rid+"&state=1", fulfilled);
+        }
+        
+        function fulfilled(){
+            alert("You have chosen to fulfill this request!");
+          	window.location="#";
+        }
+        
+        function httpGetAsync(theUrl, callback) {
+        	var xmlHttp = new XMLHttpRequest();
+          xmlHttp.onreadystatechange = function() {
+          if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+          	callback(xmlHttp.responseText);
+        	}
+          xmlHttp.open("GET", theUrl, true);
+        	xmlHttp.send(null);
+        }
+        
+        //yalecodeathon2016.000webhostapp.com/api/request.php?action=getlist&address=ADDRESS&radius=RADIUS
+        
+        var useremail;
+        
+        
+            (function() {
+              useremail = getCookie("email");
+              httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/user.php?action=get&email=" + useremail, genList);
+              
+              
+						})();        
+                    
+                    
+      
+                    
+     </script>
+      
+      
         <h1> Fulfill</h1>
+      
         <form>
-            <b>Type of Job:</b> <span id="x">Pretend to be my date</span> <br>
-            Description: I have a family dinner coming up and need someone to be my date.<br>
-            Distance: 1.4 miles away <br>
-            Price: $200
-            <br>
-            <input type="submit" value="Fulfill" id="s" onclick="fulfillNow();">
-            <p></p>
-            
-            Type of Job: <span id="x">Lawn Maintenance</span> <br>
-            Description: I need someone to mow my lawn and trim the bushes <br>
-            Distance: 0.6 miles away <br>
-            Price: $30
-            <br>
-            <input type="submit" value="Fulfill" id="s" onclick="fulfillNow();">
-            <p></p>
-            
-            Type of Job: <span id="x">Babysitting</span> <br>
-            Description: I'm going to be out of town for two days and need an awesome babysitter! <br>
-            Distance: 2.3 miles away <br>
-            Price: $12/hr
-            <br>
-            <input type="submit" value="Fulfill" id="s" onclick="fulfillNow();">
-            
+          <div id="feed"></div>
         </form>
         
     </body>
-    <script>
-        function fulfillNow() {
-            prompt("The requester is named Ruby and her email is happy@gmail.com. Do you agree to do this task?", "Sign your name");
-        };
-    </script>
-
-</html
+</html>
