@@ -50,15 +50,14 @@
     </head>
     
     <body>
-        <form id = "signupForm">
-            
+        <form action="" method="get" onsubmit="calculate();">  
             <div id="signup">
             <p></p>
             <h1>Sign Up!</h1>
             
             <div class="beep">
-                <input type="text" name="name" value="NAME" id="name" ><br>
-                <input type="email" name="email" value="EMAIL" id="email" ><br>
+                <input type="text" name="name" value="NAME" id="name"><br>
+                <input type="text" name="email" value="EMAIL" id="email" ><br>
                 <input type="text" name="distance" value="DISTANCE" id="distance" ><br>
                 <input type="text" name="address" value="ADDRESS" id="address" ><br>
                 <input type="text" name="balance" value="BALANCE" id="balance" ><br>
@@ -71,10 +70,20 @@
             <input type="text" name="password" value="PASSWORD" id="PASSWORD" ><p>
             <input type="submit" name="submit" value="SIGN UP">
             <a href="index.html"><input type="button" name="return" value="GO BACK"></a>
-            </div>
-            
-            
+            </div>    
         </form>
     </body>
+    
+    <script>
+        function calculate() {
+            var namePrint = document.getElementById("name").value;
+            alert(namePrint);
+            var emailPrint = document.getElementById("email").value;
+            alert(emailPrint);
+            
+            var xmlHttp = new XMLHttpRequest();
+            xmlHttp.open("GET", "http://yalecoadeathon2016.000webhostapp.com/api/user.php?action=add&email=")
+        }
+    </script>
     
 </html>
