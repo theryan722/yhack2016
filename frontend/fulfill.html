@@ -53,7 +53,6 @@
 					}
           document.getElementById('feed').innerHTML = feedhtml;
          
-<<<<<<< HEAD
         }
         
         function displayCharity(dispjson){
@@ -78,32 +77,6 @@
           return false;
         }
         
-=======
-        }
-        
-        function displayCharity(dispjson){
-          var charityhtml = "";
-          var jsonarray = JSON.parse(dispjson);
-        	for(var i = 0; i < jsonarray.length; i++) {
-    				var items = jsonarray[i];
-            
-            charityhtml += "<b>Title:</b> <span id=\"x\">"+items['title']+"</span> <br/><b>Description:</b> "+items['description']+"<br/>"+"<b>Address: </b>"+items['address']+"<br/><b>Price: </b>$"+items['price'] + 
-              "<br/><input type=\"submit\" value=\"Fulfill\" id=\"s\" onclick='fulfillNow("+items['id'] +"," + items['price']+");'> <br/><br/>";
-            
-					}
-          document.getElementById('charity').innerHTML = charityhtml;
-         
-        }
-        
-        
-        function fulfillNow(rid, pr){
-          httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/request.php?action=update&id="+rid+"&state=2", doNothing);
-          httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/user.php?action=addbalance&email="+getCookie("email")+"&amount=" + pr, fulfilled);
-          window.location.href="http://yalecodeathon2016.000webhostapp.com/app/profile.html";
-          return false;
-        }
-        
->>>>>>> origin/master
         function doNothing(){
          //do nothing 
         }
