@@ -38,6 +38,7 @@
           var radius = jsonarray['radius'];
           
           httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/request.php?action=getlist&address="+address+"&radius="+radius, displayList);
+        	httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/charity.php?action=getlist&address="+address+"&radius="+radius, displayCharity);
         }
         
         function displayList(dispjson){
@@ -46,15 +47,38 @@
         	for(var i = 0; i < jsonarray.length; i++) {
     				var items = jsonarray[i];
             
-            feedhtml += "<b>Type of Job:</b> <span id=\"x\">"+items['type']+"</span> <br/><b>Description:</b> "+items['description']+"<br/>"+"<b>Address: </b>"+items['address']+" miles away <br/><b>Price: </b>$"+items['price'] + 
-              "<br/><input type=\"submit\" value=\"Fulfill\" id=\"s\" onclick='fulfillNow("+items['id']+");'> <br/><br/>";
+            feedhtml += "<b>Type of Job:</b> <span id=\"x\">"+items['type']+"</span> <br/><b>Description:</b> "+items['description']+"<br/>"+"<b>Address: </b>"+items['address']+"<br/><b>Price: </b>$"+items['price'] + 
+              "<br/><input type=\"submit\" value=\"Fulfill\" id=\"s\" onclick='fulfillNow("+items['id']+","+items['price']+");'> <br/><br/>";
             
 					}
           document.getElementById('feed').innerHTML = feedhtml;
+         
         }
         
-        function fulfillNow(rid){
-          httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/request.php?action=update&id="+rid+"&state=1", fulfilled);
+        function displayCharity(dispjson){
+          var charityhtml = "";
+          var jsonarray = JSON.parse(dispjson);
+        	for(var i = 0; i < jsonarray.length; i++) {
+    				var items = jsonarray[i];
+            
+            charityhtml += "<b>Title:</b> <span id=\"x\">"+items['title']+"</span> <br/><b>Description:</b> "+items['description']+"<br/>"+"<b>Address: </b>"+items['address']+"<br/><b>Price: </b>$"+items['price'] + 
+              "<br/><input type=\"submit\" value=\"Fulfill\" id=\"s\" onclick='fulfillNow("+items['id'] +"," + items['price']+");'> <br/><br/>";
+            
+					}
+          document.getElementById('charity').innerHTML = charityhtml;
+         
+        }
+        
+        
+        function fulfillNow(rid, pr){
+          httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/request.php?action=update&id="+rid+"&state=2", doNothing);
+          httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/user.php?action=addbalance&email="+getCookie("email")+"&amount=" + pr, fulfilled);
+          window.location.href="http://yalecodeathon2016.000webhostapp.com/app/profile.html";
+          return false;
+        }
+        
+        function doNothing(){
+         //do nothing 
         }
         
         function fulfilled(){
@@ -82,7 +106,6 @@
               useremail = getCookie("email");
               httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/user.php?action=get&email=" + useremail, genList);
               
-              
 						})();        
                     
                     
@@ -94,7 +117,10 @@
         <h1> Fulfill</h1>
       
         <form>
+          <h2>Jobs</h2>
           <div id="feed"><h3>Loading Data....</h3></div>
+          <h2>Charity</h2>
+          <div id="charity"><h3>Loading Data....</h3></div>
         </form>
         
     </body>
