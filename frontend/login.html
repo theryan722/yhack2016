@@ -8,7 +8,6 @@
                 margin-top: 50%;
                 background: url("images/sky.jpg");
             }
-
             input[type="text"] {
                 background: url(images/email.png) no-repeat left;
                 background-color: rgba(255,255,255, 0.5);
@@ -56,7 +55,34 @@
     
     
     <body>
-        <form>
+        
+    <script type="text/javascript">
+      function httpGetAsync(theUrl, callback)
+{
+    var xmlHttp = new XMLHttpRequest();
+    xmlHttp.onreadystatechange = function() {
+        if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+            callback(xmlHttp.responseText, document.getElementById("email").value);
+    }
+    xmlHttp.open("GET", theUrl, true); // true for asynchronous
+    xmlHttp.send(null);
+}
+      function exb(resp, ema){
+        if (resp == "Success"){
+          document.cookie = "email=" + ema;
+          window.location="fulfill.html"
+        }else{
+          alert("Invalid username or password!");
+        }
+      }
+        function login() {
+            var emailP = document.getElementById("email").value;
+            var passP = document.getElementById("password").value;
+            httpGetAsync(("http://yalecodeathon2016.000webhostapp.com/api/user.php?action=verify&email=" + emailP + "&password=" + passP).replace(/ /g,"%20"), exb);
+}
+    </script>
+        
+        <form id="loginform" method="get" onSubmit="javascript:login();">
             
             <!-- First Name: <br>
             <input type="text" name="firstname"> <br>
@@ -67,7 +93,7 @@
             <div id="login">
             <h1>Welcome Back!</h1> <br>
             <input type="text" name="email" value="Email" id="email"><br>
-            <input type="password" name="password" value="password" id="PASSWORD"><p>
+            <input type="password" name="password" value="password" id="password"><p>
                 
             <input type="submit" name="submit" value="LOG IN">
                 
