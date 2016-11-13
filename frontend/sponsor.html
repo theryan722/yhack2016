@@ -59,6 +59,10 @@
                    xmlHttp.open("GET", theUrl, true);
                    xmlHttp.send(null);
            }
+		   
+	   function exb(resp){
+        	console.log(resp);
+      	   }
 
            function updateMasterBalance() {
                    var amount = document.getElementById("amount").value;

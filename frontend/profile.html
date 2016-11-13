@@ -33,14 +33,15 @@
         
         <h1>Profile</h1>
         <form>
-            Id Number: #2435 <br>
-            Name: Ruby <br>
-            Email: ruby@gmail.com <br>
-            Location: New York<br>
-            
-            Balance: $2 <br>
-            Budget: $50 <br>
-            How much more: $48
+            <br>
+          <div id="p_name">Name: Ruby </div>
+          <div id="p_email"></div>
+          <div id="p_address"></div>
+          <div id="p_radius"></div>
+          <h2>Financial</h2>
+          <div id="p_balance"></div>
+          <div id="p_budget"></div>
+          <div id="p_remain"></div>
         </form>
         
     </body>
@@ -50,7 +51,6 @@
     $(document).ready(function(){ 
         var touch 	= $('#resp-menu');
         var menu 	= $('.menu');
-
         $(touch).on('click', function(e) {
             e.preventDefault();
             menu.slideToggle();
@@ -58,16 +58,39 @@
     });
     </script>
     <script type="text/javascript">
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-36251023-1']);
-      _gaq.push(['_setDomainName', 'jqueryscript.net']);
-      _gaq.push(['_trackPageview']);
-
+      function getCookie(name) {
+  				var value = "; " + document.cookie;
+  				var parts = value.split("; " + name + "=");
+  				if (parts.length == 2) return parts.pop().split(";").shift();
+      }
+       
+      function callUserInfo(resp){
+        console.log(resp);
+        var temp = JSON.parse(resp);
+        setUserInfo(temp['name'], temp['email'], temp['address'], temp['radius'], temp['balance'], temp['budget']);
+      }
+      
+      function httpGetAsync(theUrl, callback) {
+        	var xmlHttp = new XMLHttpRequest();
+          xmlHttp.onreadystatechange = function() {
+          if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+          	callback(xmlHttp.responseText);
+        	}
+          xmlHttp.open("GET", theUrl, true);
+        	xmlHttp.send(null);
+      }
+      
+      function setUserInfo(pname, pemail, paddress, pradius, pbalance, pbudget) {
+        document.getElementById('p_name').innerHTML = "<b>Name: </b>" + pname;
+        document.getElementById('p_email').innerHTML = "<b>Email: </b>" + pemail;
+        document.getElementById('p_address').innerHTML = "<b>Address: </b>" + paddress;
+        document.getElementById('p_radius').innerHTML = "<b>Max Radius: </b>" + pradius;
+        document.getElementById('p_balance').innerHTML = "<b>Current Balance: </b>" + pbalance;
+        document.getElementById('p_budget').innerHTML = "<b>Goal: </b>" + pbudget;
+        document.getElementById('p_remain').innerHTML = "<b>Amount needed to reach goal: </b>" + (pbudget - pbalance);
+      }
       (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+       httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/user.php?action=get&email="+getCookie("email"), callUserInfo);
       })();
-
 </script>
-</html
+</html>
