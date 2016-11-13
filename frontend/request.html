@@ -6,6 +6,8 @@
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
 
+        <script src="js/jquery.min.js"></script>
+
         <style>
             body {
                 margin: auto;
@@ -13,13 +15,13 @@
                 text-align: center;
                 background-image: url("images/geometry.png");
             }
-            
+
             h1{
                color: #8FDBCD;
                 font-size: 75px;
                 padding-bottom: 40px;
             }
-            
+
             input[type="submit"] {
                 background-color: #8FDBCD;
                 color: white;
@@ -29,7 +31,7 @@
                 font-size: 15px;
                 border:1px solid #545454;
             }
-        
+
             @media only screen and (min-width: 1000px) {
                 body {
                     margin-top: 0%;
@@ -39,21 +41,46 @@
                 margin-top: 20px;
                 font-size: 40px !important;
             }
-            
+
             .input-field{
                 padding:20px !important;
             }
-            
+
         </style>
     </head>
-    
+
     <body>
-        <form id="request">
-        <h1> Request a Task</h1>            
-                  
+
+            <script type="text/javascript">
+
+            function httpGetAsync(theUrl, callback) {
+                    var xmlHttp = new XMLHttpRequest();
+                    xmlHttp.onreadystatechange = function() {
+                            if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                                callback(xmlHttp.responseText);
+                    }
+                    xmlHttp.open("GET", theUrl, true);
+                    xmlHttp.send(null);
+            }
+
+            function addRequest() {
+                    var type = document.getElementById("type").value;
+                    var dsc = document.getElementById("describe").value;
+                    var name = document.getElementById("name").value;
+                    var phone = document.getElementById("telephone").value;
+                    var email = document.getElementById("email").value;
+                    var address = document.getElementById("address").value;
+                    var reward = document.getElementById("reward").value;
+
+                    httpGetAsync(("http://yalecodeathon2016.000webhostapp.com/api/request.php?action=add&email="+email+"&type="+type+"&description="+dsc+"&address="+address+"&price="+reward+"&state='0'").replace(/ /g, "%20"), exb);
+            }
+
+        <form id="request" method="get" onSubmit="javascript:addRequest();">
+        <h1> Request a Task</h1>
+
                     <div class="input-field col s12">
                     <i class="material-icons prefix">label</i>
-                    <input id="type" type="text" 
+                    <input id="type" type="text"
                     value="Type of Job">
                     </div>
                     <p>
@@ -61,36 +88,36 @@
                     <i class="material-icons prefix">info</i>
                     <input id="describe" type="text" class="validate"
                     value="Description"></div>
-                    
+
                     <div class="input-field col s12">
                     <i class="material-icons prefix">account_circle</i>
                     <input id="name" type="text" class="validate"
                     value="Name">
                     </div>
-                
+
                     <div class="input-field col s12">
                     <i class="material-icons prefix">phone</i>
                     <input id="telephone" type="tel" class="validate"
                     value="Telephone">
                     </div>
-                  
+
                     <div class="input-field col s12">
                     <i class="material-icons prefix">email</i>
                     <input id="email" type="email" class="validate"
                     value="Email">
                     </div>
-                    
+
                     <div class="input-field col s12">
                     <i class="material-icons prefix">location_on</i>
                     <input id="address" type="text" class="validate"
                     value="Address of Task">
                     </div>
-                        
+
                     <div class="input-field col s12">
                     <i class="material-icons prefix">thumb_up</i>
                         <input id="reward" type="text" value="Amount Rewarded">
                     </div>
-                
+
                     <input type="submit" value="SUBMIT" id="sub">
         </form>
     </body>
