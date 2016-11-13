@@ -1,33 +1,36 @@
 <html>
     <head>
         <link rel="stylesheet" type="text/css" href="css/regularPages.css">
-         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="css/materialize.css">
+        <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
+
         <style>
-       
+            body {
+                margin: auto;
+                margin-top: 50%;
+                text-align: center;
+                background-image: url("images/geometry.png");
+            }
+            
             h1{
                color: #8FDBCD;
             }
             
-            input, textarea {
-               width: 100%;
-               margin: 10px;
-               border:1px solid #636363;
-               font-size: 14px;
-            }
-            
             input[type="submit"] {
-                background-color: white;
+                background-color: #8FDBCD;
+                color: white;
+                border: 0;
+                width: 70%;
+                height: 50px;
+                font-size: 15px;
             }
             
             select {
                 width: 100%;
-            }
-            
-            textarea:focus {
-                outline: none;
-            }
-            #description {
-                height: 200px;
+                margin-left: 10px;
+                color: #575757;
             }
             
             table {
@@ -40,31 +43,51 @@
                 }
             }
             
+            
         </style>
     </head>
     
     <body>
-        <form>
-            <h1> Request a Task</h1>
-            
-            <input type="text" value="Type of Job"><br>
-            <textarea rows="4" value="Description">Description of task</textarea><br>
-            <!--<input type="text" value="Description" id="description"><br>-->
-            <input type="text" value="Name" ><br>
-            <input type="tel" pattern="^\d{3}-\d{3}-\d{4}$" value="Phone (111-111-1111)"><br>
-            <input type="text" value="Address"><br>
-            <input type="email" value="Email@Server.com" > <p>
-            <br clear="all">
-            <select>
-                <option value="Not Fulfilled">Not Fulfilled</option>
-                <option value="In Progress">In Progress</option>
-                <option value="Fulfilled">Fulfilled</option>
-            </select>
-            <input type="submit" value="Submit" value="submit">
-            
-            
-        </form>
         
+        <h1> Request a Task</h1>            
+                    <div class="row">
+                    <div class="input-field col s12">
+                    <i class="material-icons prefix">label</i>
+                    <input id="type" type="text" 
+                    value="Type of Job">
+                    </div>
+                    
+                    <div class="input-field col s12">
+                    <i class="material-icons prefix">info</i>
+                    <input id="describe" type="text" class="validate"
+                    value="Description"></div>
+                    
+                    <div class="input-field col s12">
+                    <i class="material-icons prefix">account_circle</i>
+                    <input id="name" type="text" class="validate"
+                    value="Name">
+                    </div>
+                
+                    <div class="input-field col s12">
+                    <i class="material-icons prefix">phone</i>
+                    <input id="telephone" type="tel" class="validate"
+                    value="Telephone">
+                    </div>
+                  
+                    <div class="input-field col s12">
+                    <i class="material-icons prefix">email</i>
+                    <input id="email" type="email" class="validate"
+                    value="Email">
+                    </div>
+                    
+                    <div class="input-field col s12">
+                    <i class="material-icons prefix">location_on</i>
+                    <input id="address" type="text" class="validate"
+                    value="Address of Task">
+                    </div>
+              
+                    <input type="submit" value="SUBMIT" id="sub">
+    
     </body>
 
 
