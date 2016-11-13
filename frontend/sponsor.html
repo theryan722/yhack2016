@@ -1,25 +1,28 @@
 <html>
     <head>
-        <link rel="stylesheet" type="text/css" href="css/regularPages.css">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="css/materialize.css">
         <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
+        <script src="js/dropmenu.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
-        <script src="js/jquery.min.js"></script>
+        <link rel="stylesheet" type="text/css" href="css/dropmenu.css">
+        <link rel="stylesheet" type="text/css" href="css/regularPages.css">
+         <script src="js/jquery.min.js"></script>
+        
         <style>
             body {
                 margin: auto;
-                margin-top: 30%;
-                text-align: center;
-                background-image: url("images/geometry.png");
+                margin-top: 40%;
             }
-
+            
             h1{
                color: #8FDBCD;
                 font-size: 75px;
                 padding-bottom: 40px;
             }
-
+            
             input[type="submit"] {
                 background-color: #8FDBCD;
                 color: white;
@@ -28,9 +31,9 @@
                 height: 70px;
                 font-size: 15px;
                 border: 1px solid #545454;
-
+                
             }
-
+        
             @media only screen and (min-width: 1000px) {
                 body {
                     margin-top: 0%;
@@ -40,16 +43,17 @@
                 margin-top: 20px;
                 font-size: 40px !important;
             }
-
+            
             .input-field{
                 padding:20px !important;
             }
-
+            
         </style>
     </head>
-
+    
     <body>
-           <script type="text/javascript">
+        
+         <script type="text/javascript">
            function httpGetAsync(theUrl, callback) {
                    var xmlHttp = new XMLHttpRequest();
                    xmlHttp.onreadystatechange = function() {
@@ -74,14 +78,33 @@
            </script>
 
         <form id="Sponsor" method="get" onSubmit="javascript:updateMasterBalance();">
-        <h1> Sponsor Us!</h1>
-
+        
+            
+            
+            
+            
+         <nav> <a id="resp-menu" href="#"><img src="images/menu.png" width="50px"></a>
+          <ul class="menu">
+              <li><a  href="index.html">Home</a></li>
+              <li><a  href="login.html">Login</a></li>
+              <li><a  href="signup.html">Sign Up</a></li>
+              <li><a  href="fulfill.html">Fulfill</a></li>
+              <li><a  href="request.html">Request</a></li>
+              <li><a  href="sponsor.html">Sponsor</a></li>
+              <li><a  href="about.html">About</a></li>
+               
+          </ul>
+        </nav>
+        
+        <form id="Sponsor">
+        <h1> Sponsor Us!</h1>            
+        
         <div class="input-field col s12">
         <i class="material-icons prefix">input</i>
         <input id="amount" type="text" value="Amount">
         </div>
 
-        <div class="input-field col s12">
+        <div class="input-field col s12">    
         <i class="material-icons prefix">credit_card</i>
         <input id="number" type="text" value="Card Number">
         </div>
@@ -95,5 +118,68 @@
         </form>
     </body>
 
+    <script src="http://code.jquery.com/jquery-2.1.3.min.js"></script> 
+    <script>
+    $(document).ready(function(){ 
+        var touch 	= $('#resp-menu');
+        var menu 	= $('.menu');
 
-</html>
+        $(touch).on('click', function(e) {
+            e.preventDefault();
+            menu.slideToggle();
+        });
+    });
+    </script>
+       <script type="text/javascript">
+      function getCookie(name) {
+  				var value = "; " + document.cookie;
+  				var parts = value.split("; " + name + "=");
+  				if (parts.length == 2) return parts.pop().split(";").shift();
+      }
+       
+      function callUserInfo(resp){
+        console.log(resp);
+        var temp = JSON.parse(resp);
+        setUserInfo(temp['name'], temp['email'], temp['address'], temp['radius'], temp['balance'], temp['budget']);
+      }
+      
+      function httpGetAsync(theUrl, callback) {
+        	var xmlHttp = new XMLHttpRequest();
+          xmlHttp.onreadystatechange = function() {
+          if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+          	callback(xmlHttp.responseText);
+        	}
+          xmlHttp.open("GET", theUrl, true);
+        	xmlHttp.send(null);
+      }
+      
+      function setUserInfo(pname, pemail, paddress, pradius, pbalance, pbudget) {
+        document.getElementById('p_name').innerHTML = "<b>Name: </b>" + pname;
+        document.getElementById('p_email').innerHTML = "<b>Email: </b>" + pemail;
+        document.getElementById('p_address').innerHTML = "<b>Address: </b>" + paddress;
+        document.getElementById('p_radius').innerHTML = "<b>Max Radius: </b>" + pradius;
+        document.getElementById('p_balance').innerHTML = "<b>Current Balance: </b>" + pbalance;
+        document.getElementById('p_budget').innerHTML = "<b>Goal: </b>" + pbudget;
+        document.getElementById('p_remain').innerHTML = "<b>Amount needed to reach goal: </b>" + (pbudget - pbalance);
+      }
+      (function() {
+       httpGetAsync("http://yalecodeathon2016.000webhostapp.com/api/user.php?action=get&email="+getCookie("email"), callUserInfo);
+      })();
+</script>
+    
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-36251023-1']);
+      _gaq.push(['_setDomainName', 'jqueryscript.net']);
+      _gaq.push(['_trackPageview']);
+
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+
+</script>
+
+</html
