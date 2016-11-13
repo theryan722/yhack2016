@@ -51,7 +51,7 @@
                 foreach ($array as $number => $row) {
                         $address2 = $row["address"];
                         $result = getDistance($address, $address2);
-                        if ($result <= $radius && $row["state"] === 0)
+                        if ($result <= $radius && $row["state"] == 0)
                                 $nearest_requests[] = $row;
                 }
                 $json = json_encode($nearest_requests);
