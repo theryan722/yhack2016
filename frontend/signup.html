@@ -5,45 +5,38 @@
          <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
         <style>
             body {
-                margin-top: 0%;
+                margin-top: 10%;
+                width: 90%;
+                margin-left: 5%;
                 background: url("images/sky.jpg");
-            }
-            
-            input[type="text"] {
-                background: url(images/user.png) no-repeat left;
-            }
-            
-            input[type="email"] {
-                background: url(images/email.png) no-repeat left;
-            }
-            
-            input[type="password"] {
-                background: url(images/password.png) no-repeat left;
             }
             
              input[type="text"],input[type="email"],  input[type="password"] {
                 background-color: rgba(255,255,255, 0.5);
-                padding: 10px;
-                padding-left:50px;           
+                padding: 10px; 
             }
             
-            input[type="submit"] {
-                background-color: #579EAD;
+            input[type="submit"], input[type="button"] {
+                width: 30%;
+                background-color: #5C8AA6;
                 color: white;
             }
             
             input {
-                margin: 30px;
-                padding: 10px;
+                text-align: center;
+                margin: 20px;
+                padding: 15px;
                 border-radius: 100px;
                 width: 80%;
-                height: 60px;
+                height: 75px;
                 color: #575757;
                 font-size: 30px;
                 border:1px solid #BFBFBF;
             }
+            
             h1 {
-                color: #579EAD;
+                color: #5C8AA6;
+                font-size: 120px;
             }
              @media only screen and (min-width: 1000px) {
                 body {
@@ -52,28 +45,35 @@
                 }
             }
             
+            
         </style>
     </head>
     
     <body>
         <form id = "signupForm">
+            
             <div id="signup">
-            <h1>Sign Up!</h1> <br>
+            <p></p>
+            <h1>Sign Up!</h1>
             
             <div class="beep">
-                <input type="text" name="name" value="NAME" id="name" onclick="this.value=''">  <br>
-                <input type="email" name="email" value="EMAIL" id="email" onclick="this.value=''"><br>
-                <input type="text" name="distance" value="DISTANCE" id="distance" onclick="this.value=''"><br>
-                <input type="text" name="address" value="ADDRESS" id="address" onclick="this.value=''"><br>
-                <input type="text" name="balance" value="BALANCE" id="balance" onclick="this.value=''"><br>
-                <input type="text" name="budget" value="BUDGET" id="budget" onclick="this.value=''"><br>
+                <input type="text" name="name" value="NAME" id="name" ><br>
+                <input type="email" name="email" value="EMAIL" id="email" ><br>
+                <input type="text" name="distance" value="DISTANCE" id="distance" ><br>
+                <input type="text" name="address" value="ADDRESS" id="address" ><br>
+                <input type="text" name="balance" value="BALANCE" id="balance" ><br>
+                <input type="text" name="budget" value="BUDGET" id="budget" ><br>
             </div>
                 
                 
                 
-            <input type="password" name="password" value="password" id="PASSWORD" onclick="this.value=''"><p>
+                
+            <input type="text" name="password" value="PASSWORD" id="PASSWORD" ><p>
             <input type="submit" name="submit" value="SIGN UP">
+            <a href="index.html"><input type="button" name="return" value="GO BACK"></a>
             </div>
+            
+            
         </form>
     </body>
     
