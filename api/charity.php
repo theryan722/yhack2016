@@ -72,7 +72,7 @@
 
                         $result = getDistance($address, $address2);
 
-                        if ($result <= $radius)
+                        if ($result <= $radius && $row["state"] === 0)
                                 $nearest_requests[] = $row;
                 }
 
