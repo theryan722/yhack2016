@@ -17,6 +17,36 @@
 		} else {
 			echo "Fail";
 		}
+	} else if (strcmp($action, "addbalance") == 0) {
+		$email = $_GET["email"];
+		$amount = $_GET["amount"];
+		
+		$query = "SELECT balance FROM profiles WHERE email = '$email'";
+		$result = mysqli_query($conn, $query);
+		$array = mysqli_fetch_assoc($result);
+		$amount += $array["balance"];
+		
+		$sql = "UPDATE profiles SET balance='$amount' WHERE email = '$email'";
+		    if (mysqli_query($conn, $sql)) {
+			echo "Success";
+		} else {
+			echo "Fail";
+		}
+	} else if (strcmp($action, "subtractbalance") == 0) {
+		$email = $_GET["email"];
+		$amount = $_GET["amount"];
+		
+		$query = "SELECT balance FROM profiles WHERE email = '$email'";
+		$result = mysqli_query($conn, $query);
+		$array = mysqli_fetch_assoc($result);
+		$amount = $array["balance"] - $amount;
+		
+		$sql = "UPDATE profiles SET balance='$amount' WHERE email = '$email'";
+		    if (mysqli_query($conn, $sql)) {
+			echo "Success";
+		} else {
+			echo "Fail";
+		}
 	} else if (strcmp($action, "get") == 0) {
 		$query = "SELECT * FROM profiles WHERE email = '$email'";
 		$result = mysqli_query($conn, $query);
