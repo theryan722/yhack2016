@@ -56,12 +56,11 @@
 	<title></title>
 </head>
 <body>
-	<form>
 		<script type="text/javascript">
 		   
 		    function httpGetAsync(theUrl, callback)       
 		{       
-		  var xmlHttp = new XMLHttpRequest();     
+		  var xmlHttp = new XMLHttpRequest(); 
 		  xmlHttp.onreadystatechange = function() {       
 		      if (xmlHttp.readyState == 4 && xmlHttp.status == 200)       
 		          callback(xmlHttp.responseText, document.getElementById("email").value);     
@@ -69,11 +68,11 @@
 		  xmlHttp.open("GET", theUrl, true); // true for asynchronous     
 		  xmlHttp.send(null);     
 		}       
-		    function exb(resp, ema){      
-		      if (resp == "Success"){     
-		        document.cookie = "email=" + ema;     
-		        window.location.href="http://yalecodeathon2016.000webhostapp.com/app/fulfill.html";
-			
+		    function exb(resp, ema){
+		      if (resp == "Success"){
+
+		        document.cookie = "email=" + ema; 
+		        window.location.href = "http://yalecodeathon2016.000webhostapp.com/app/fulfill.html";
 		return false;       
 		      }else{      
 		        alert("Invalid username or password!");       
@@ -85,14 +84,13 @@
 		          httpGetAsync(("http://yalecodeathon2016.000webhostapp.com/api/user.php?action=verify&email=" + emailP + "&password=" + passP).replace(/ /g,"%20"), exb);        
 		}       
 		</script>
-		<form id="loginform" method="get" name="loginform" onsubmit="javascript:login();">
+		<form id="loginform" method="get" name="loginform" action="javascript:login();">
 			<div id="login">
-				<h1>Welcome Back!</h1><br>
-				<input id="email" name="email" type="text" value="Email"><br>
+				<h1>Welcome Back!</h1><br/>
+				<input id="email" name="email" type="text" value="Email"><br/>
 				<input id="password" name="password" type="password" value="password">
 				<p><input name="submit" type="submit" value="LOG IN"> <a href="index.html"><input name="return" type="button" value="GO BACK"></a></p>
 			</div>
 		</form>
-	</form>
 </body>
 </html>
