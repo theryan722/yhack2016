@@ -5,7 +5,7 @@
         <link rel="stylesheet" type="text/css" href="css/materialize.min.css">
         <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
-
+        <script src="js/jquery.min.js"></script>
         <style>
             body {
                 margin: auto;
@@ -13,13 +13,13 @@
                 text-align: center;
                 background-image: url("images/geometry.png");
             }
-            
+
             h1{
                color: #8FDBCD;
                 font-size: 75px;
                 padding-bottom: 40px;
             }
-            
+
             input[type="submit"] {
                 background-color: #8FDBCD;
                 color: white;
@@ -28,9 +28,9 @@
                 height: 70px;
                 font-size: 15px;
                 border: 1px solid #545454;
-                
+
             }
-        
+
             @media only screen and (min-width: 1000px) {
                 body {
                     margin-top: 0%;
@@ -40,24 +40,44 @@
                 margin-top: 20px;
                 font-size: 40px !important;
             }
-            
+
             .input-field{
                 padding:20px !important;
             }
-            
+
         </style>
     </head>
-    
+
     <body>
-        <form id="Sponsor">
-        <h1> Sponsor Us!</h1>            
-        
+           <script type="text/javascript">
+           function httpGetAsync(theUrl, callback) {
+                   var xmlHttp = new XMLHttpRequest();
+                   xmlHttp.onreadystatechange = function() {
+                           if (xmlHttp.readyState == 4 && xmlHttp.status == 200)
+                                callback(xmlHttp.responseText);
+                   }
+                   xmlHttp.open("GET", theUrl, true);
+                   xmlHttp.send(null);
+           }
+
+           function updateMasterBalance() {
+                   var amount = document.getElementById("amount").value;
+                   httpGetAsync(("http://yalecodeathon2016.000webhostapp.com/api/balance.php?action=add&amount=" + amount).replace(/ /g, "%20"), exb);
+           }
+
+        //    yalecodeathon2016.000webhostapp.com/api/balance.php?action=add&amount=AMOUNT
+	// adds the specified value to the master balance
+           </script>
+
+        <form id="Sponsor" method="get" onSubmit="javascript:updateMasterBalance();">
+        <h1> Sponsor Us!</h1>
+
         <div class="input-field col s12">
         <i class="material-icons prefix">input</i>
         <input id="amount" type="text" value="Amount">
         </div>
 
-        <div class="input-field col s12">    
+        <div class="input-field col s12">
         <i class="material-icons prefix">credit_card</i>
         <input id="number" type="text" value="Card Number">
         </div>
@@ -72,4 +92,4 @@
     </body>
 
 
-</html
+</html>
