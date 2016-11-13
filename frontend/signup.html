@@ -5,7 +5,7 @@
          <link href="https://fonts.googleapis.com/css?family=Open+Sans|Open+Sans+Condensed:300" rel="stylesheet">
         <style>
             body {
-                margin-top: 55%;
+                margin-top: 0%;
                 background: url("images/sky.jpg");
             }
             
@@ -33,7 +33,8 @@
             }
             
             input {
-                margin: 20px;
+                margin: 30px;
+                padding: 10px;
                 border-radius: 100px;
                 width: 80%;
                 height: 60px;
@@ -44,7 +45,7 @@
             h1 {
                 color: #579EAD;
             }
-             @media only screen and (min-width: 800px) {
+             @media only screen and (min-width: 1000px) {
                 body {
                     margin-top: 0%;
                     background-image: url("images/skywide.jpg");
@@ -54,15 +55,22 @@
         </style>
     </head>
     
-    
     <body>
-        <form>
+        <form id = "signupForm">
             <div id="signup">
             <h1>Sign Up!</h1> <br>
+            
             <div class="beep">
                 <input type="text" name="name" value="NAME" id="name" onclick="this.value=''">  <br>
                 <input type="email" name="email" value="EMAIL" id="email" onclick="this.value=''"><br>
+                <input type="text" name="distance" value="DISTANCE" id="distance" onclick="this.value=''"><br>
+                <input type="text" name="address" value="ADDRESS" id="address" onclick="this.value=''"><br>
+                <input type="text" name="balance" value="BALANCE" id="balance" onclick="this.value=''"><br>
+                <input type="text" name="budget" value="BUDGET" id="budget" onclick="this.value=''"><br>
             </div>
+                
+                
+                
             <input type="password" name="password" value="password" id="PASSWORD" onclick="this.value=''"><p>
             <input type="submit" name="submit" value="SIGN UP">
             </div>
